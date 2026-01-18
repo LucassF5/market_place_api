@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
-    # Here we will put all our API routes
+    namespace :v1 do para incluir formato JSON padrã para incluir formato JSON padrãoo
+      # Here we will put all our API routes
+    end
   end
 
   get "up" => "rails/health#show", as: :rails_health_check
