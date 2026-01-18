@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-
-  namespace :api do
+  namespace :api, defaults: { format: :json } do
     # Here we will put all our API routes
   end
-    
+
   get "up" => "rails/health#show", as: :rails_health_check
 
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
