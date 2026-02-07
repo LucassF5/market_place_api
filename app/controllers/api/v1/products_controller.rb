@@ -14,6 +14,7 @@ class Api::V1::ProductsController < ApplicationController
     def create
         product = current_user.products.build(product_params)
         if product.save
+            Rails.logger.info "Product created with ID: #{product.id} by User ID: #{current_user.id}"
             render json: product, status: :created
         else
             render json: { errors: product.errors }, status: :unprocessable_entity
@@ -22,6 +23,7 @@ class Api::V1::ProductsController < ApplicationController
 
     def update
         if @product.update(product_params)
+            Rails.logger.info "Product with ID: #{@product.id} updated by User ID: #{current_user.id}"
             render json: @product, status: :ok
         else
             render json: @product.errors, status: :unprocessable_entity
@@ -29,6 +31,7 @@ class Api::V1::ProductsController < ApplicationController
     end
 
     def destroy
+        Rails.logger.info "Product with ID: #{@product.id} is being deleted by User ID: #{current_user.id}"
         @product.destroy
         head :no_content
     end
@@ -44,6 +47,7 @@ class Api::V1::ProductsController < ApplicationController
     end
 
     def check_owner
+        Rails.logger.info "Current user ID: #{current_user&.id}, Product user ID: #{@product.user_id}"
         head :forbidden unless @product.user_id == current_user&.id
     end
 end
