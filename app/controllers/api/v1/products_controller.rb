@@ -4,27 +4,28 @@ class Api::V1::ProductsController < ApplicationController
     before_action :check_owner, only: [ :update, :destroy ]
 
     def index
-        render json: Product.all
+        @products = Product.all
+        render json: ProductSerializer.new(@products).serializable_hash.to_json
     end
 
     def show
-        render json: @product
+        render json: ProductSerializer.new(@product).serializable_hash.to_json
     end
 
     def create
-        product = current_user.products.build(product_params)
-        if product.save
-            Rails.logger.info "Product created with ID: #{product.id} by User ID: #{current_user.id}"
-            render json: product, status: :created
+        @product = current_user.products.build(product_params)
+        if @product.save
+            Rails.logger.info "Product created with ID: #{@product.id} by User ID: #{current_user.id}"
+            render json: ProductSerializer.new(@product).serializable_hash.to_json, status: :created
         else
-            render json: { errors: product.errors }, status: :unprocessable_entity
+            render json: { errors: @product.errors }, status: :unprocessable_entity
         end
     end
 
     def update
         if @product.update(product_params)
             Rails.logger.info "Product with ID: #{@product.id} updated by User ID: #{current_user.id}"
-            render json: @product, status: :ok
+            render json: ProductSerializer.new(@product).serializable_hash.to_json, status: :ok
         else
             render json: @product.errors, status: :unprocessable_entity
         end
