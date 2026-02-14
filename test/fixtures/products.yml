@@ -1,13 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  price: 9.99
+  title: Monitor 27' 
+  price: 899.99
   published: false
   user: one
 
 two:
-  title: MyString
-  price: 9.99
+  title: AzUzA Zenbook 14"
+  price: 599.99
+  published: false
+  user: two
+
+another_monitor:
+  title: Monitor 32'
+  price: 1299.99
   published: false
   user: two
