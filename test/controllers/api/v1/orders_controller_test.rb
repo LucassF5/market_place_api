@@ -42,7 +42,7 @@ class Api::V1::OrdersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create order with two products" do
     assert_difference("Order.count", 1) do
-      post api_v1_orders_url, 
+      post api_v1_orders_url,
         params: @order_params,
         headers: { Authorization: JsonWebToken.encode(user_id: @order.user_id) }, as: :json
     end
