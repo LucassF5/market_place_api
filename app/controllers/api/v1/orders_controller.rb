@@ -8,14 +8,7 @@ class Api::V1::OrdersController < ApplicationController
                                .page(current_page)
                                .per(per_page)
 
-        options = {
-            links: {
-                first: api_v1_orders_url(page: 1),
-                last: api_v1_orders_url(page: @orders.total_pages),
-                prev: api_v1_orders_url(page: @orders.prev_page),
-                next: api_v1_orders_url(page: @orders.next_page)
-            }
-        }
+        options = get_links_serializer_options("api_v1_orders_url", @orders)
 
         render json: OrderSerializer.new(@orders, options).serializable_hash.to_json
     end
