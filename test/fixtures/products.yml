@@ -5,15 +5,18 @@ one:
   price: 899.99
   published: false
   user: one
+  quantity: 10
 
 two:
   title: AzUzA Zenbook 14"
   price: 599.99
   published: false
   user: two
+  quantity: 5
 
 another_monitor:
   title: Monitor 32'
   price: 1299.99
   published: false
   user: two
+  quantity: 3
