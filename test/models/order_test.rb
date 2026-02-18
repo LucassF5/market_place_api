@@ -10,7 +10,7 @@ class OrderTest < ActiveSupport::TestCase
   test "Should set total" do
     @order.placements = [
       Placement.new(product_id: @product1.id, quantity: 2),
-      Placement.new(product_id: @product2.id, quantity: 3),
+      Placement.new(product_id: @product2.id, quantity: 3)
     ]
 
     @order.set_total!
