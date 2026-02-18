@@ -16,6 +16,5 @@ module ActiveSupport
       assert_not_nil json_response.dig(:links, :prev)
       assert_not_nil json_response.dig(:links, :next)
     end
-
   end
 end
