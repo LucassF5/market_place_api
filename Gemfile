@@ -51,5 +51,5 @@ group :development, :test do
 end
 
 group :test do
-  gem "minitest", "< 6"
+  gem "minitest", "< 7"
 end
